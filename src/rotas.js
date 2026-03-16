@@ -28,7 +28,7 @@ router.post("/encurta", async (req, res) => {
   }
 
   res.json({
-    short_url: `http://localhost:3000/${code}`
+    short_url: `${process.env.BASE_URL}/${code}`
   })
 
 })
@@ -51,7 +51,7 @@ router.get("/:code", async (req, res) => {
     .update({ clicks: (data.clicks || 0) + 1 })
     .eq("scode", code)
 
-    
+
   res.redirect(data.url_origin)
 
 })
